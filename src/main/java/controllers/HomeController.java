@@ -18,6 +18,8 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	response.setCharacterEncoding("UTF-8");
+    	
     	response.setHeader("Content-Type", "text/plain; charset=UTF-8");
 		
     	PrintWriter print = response.getWriter();
@@ -25,9 +27,5 @@ public class HomeController extends HttpServlet {
     	print.append("request.getContextPath(): ").append(request.getContextPath() + "\n");
 		print.append("request.getServletPath(): ").append(request.getServletPath() + "\n");
 		print.append("request.getPathInfo(): ").append(request.getPathInfo() + "\n");
-	}
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGet(request, response);
 	}
 }
