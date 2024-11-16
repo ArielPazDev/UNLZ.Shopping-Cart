@@ -53,7 +53,7 @@ public class ArticleRepo {
 		return result[0];
 	}
 
-	public void print() {
+	public void viewList() {
 		System.out.println("List of Articles");
 		System.out.println("----------------");
 
