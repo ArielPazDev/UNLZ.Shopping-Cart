@@ -8,10 +8,20 @@ import java.util.stream.IntStream;
 import models.Article;
 
 public class ArticleRepo {
+	private static ArticleRepo singleton;
+	
 	private List<Article> list;
 
-	public ArticleRepo() {
+	private ArticleRepo() {
 		this.list = new ArrayList<Article>();
+	}
+
+	public static ArticleRepo getInstance() {
+		if (singleton == null ) {
+			singleton = new ArticleRepo();
+		}
+		
+		return singleton;
 	}
 
 	public boolean add(Article article) {
