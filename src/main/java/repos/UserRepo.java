@@ -7,12 +7,22 @@ import java.util.stream.IntStream;
 import models.User;
 
 public class UserRepo {
+	private static UserRepo singleton;
+	
 	private List<User> list;
 	private int id;
 
-	public UserRepo() {
+	private UserRepo() {
 		this.list = new ArrayList<User>();
 		this.id = 0;
+	}
+	
+	public static UserRepo getInstance() {
+		if (singleton == null ) {
+			singleton = new UserRepo();
+		}
+		
+		return singleton;
 	}
 
 	public boolean add(User user) {
@@ -33,7 +43,7 @@ public class UserRepo {
 		list.stream().filter(u -> u.getIdUser() == idUser).forEach(u -> u.setActive(false));
 	}
 
-	public void print() {
+	public void viewList() {
 		System.out.println("List of Users");
 		System.out.println("-------------");
 
@@ -44,5 +54,10 @@ public class UserRepo {
 						+ "Money: " + String.format("%.2f", list.get(i).getMoney())));
 
 		System.out.println("");
+	}
+
+	@Override
+	public String toString() {
+		return "UserRepo [list=" + list + ", toString()=" + super.toString() + "]";
 	}
 }

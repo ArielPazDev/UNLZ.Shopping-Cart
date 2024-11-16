@@ -17,9 +17,12 @@ public class ContextListener implements ServletContextListener {
     	System.out.println("App Starting...");
     	
 		// User (repo)
-		UserRepo userRepo = new UserRepo();
+		UserRepo userRepo = UserRepo.getInstance();
 		
-		userRepo.add(new User("1", "1", "Employee", 0.0f));    	
+		userRepo.add(new User("1", "1", "Employee", 0.0f));
+		userRepo.add(new User("2", "2", "Employee", 0.0f));
+
+		userRepo.viewList();    	
     }
 
     public void contextDestroyed(ServletContextEvent sce)  {
