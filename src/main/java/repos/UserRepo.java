@@ -18,25 +18,23 @@ public class UserRepo {
 	}
 	
 	public static UserRepo getInstance() {
-		if (singleton == null ) {
+		if (singleton == null )
 			singleton = new UserRepo();
-		}
-		
+
 		return singleton;
 	}
 
-	public boolean add(User user) {
-		boolean userExists = list.stream().anyMatch(u -> u.getUsername() == user.getUsername());
+	public void add(User user) {
+		boolean userExists = list
+				.stream()
+				.anyMatch(u -> u.getUsername() == user.getUsername());
 
 		if (userExists)
-			return false;
+			return;
 
 		user.setIdUser(++id);
-		user.setActive(true);
 
 		list.add(user);
-
-		return true;
 	}
 
 	public void delete(int idUser) {

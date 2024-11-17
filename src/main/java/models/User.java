@@ -11,6 +11,7 @@ public class User {
 	public User(String username, String password, String rol, double money) {
 		super();
 
+		this.active = true;
 		this.username = username;
 		this.password = password;
 		this.rol = rol;
