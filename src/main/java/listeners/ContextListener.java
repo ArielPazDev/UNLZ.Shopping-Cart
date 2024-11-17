@@ -19,10 +19,10 @@ public class ContextListener implements ServletContextListener {
     	// Starting
     	System.out.println("App Starting...");
 
-    	
+
     	// UserRepo (instance)
 		UserRepo userRepo = UserRepo.getInstance();
-		
+
 		// UserRepo (add)
 		userRepo.add(new User("1", "1", "Employee", 0.0f));
 		userRepo.add(new User("2", "2", "Client", 1000.0f));
@@ -30,7 +30,7 @@ public class ContextListener implements ServletContextListener {
 		// UserRepo (view list)
 		userRepo.viewList();
 
-		
+
 		// ArticleRepo (instance)
 		ArticleRepo articleRepo = ArticleRepo.getInstance();
 
@@ -45,7 +45,7 @@ public class ContextListener implements ServletContextListener {
 		articleRepo.add(new Article("L5BX5", "Dron", "Dron con cámara 4K y estabilizador", 300f, 10));
 		articleRepo.add(new Article("NSPVQ", "Monitor", "Monitor 4K UHD de 27 pulgadas", 250f, 30));
 		articleRepo.add(new Article("6PWFF", "Cargador Portátil", "Batería externa de 20000mAh", 30f, 20));
-		
+
 		// ArticleRepo (view list)
 		articleRepo.viewList("add articles");
     }
