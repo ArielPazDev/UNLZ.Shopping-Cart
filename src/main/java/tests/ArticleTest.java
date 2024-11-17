@@ -26,7 +26,7 @@ public class ArticleTest {
 
 
 		// ArticleRepo (edit)
-		articleRepo.edit(new Article("LNJMM", "Teclado Mecánico 2", "Teclado mecánico RGB para gaming 2", 80f, 30));
+		articleRepo.edit(new Article("LNJMM", "Teclado Mecánico X", "Teclado mecánico RGB para gaming X", 80f, 30));
 
 		// ArticleRepo (view list)
 		articleRepo.viewList("edit article LNJMM");

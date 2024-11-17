@@ -23,7 +23,7 @@ public class ContextListener implements ServletContextListener {
     	// UserRepo (instance)
 		UserRepo userRepo = UserRepo.getInstance();
 		
-		// UserRepo (add users)
+		// UserRepo (add)
 		userRepo.add(new User("1", "1", "Employee", 0.0f));
 		userRepo.add(new User("2", "2", "Client", 1000.0f));
 
@@ -34,7 +34,7 @@ public class ContextListener implements ServletContextListener {
 		// ArticleRepo (instance)
 		ArticleRepo articleRepo = ArticleRepo.getInstance();
 
-		// ArticleRepo (add articles)
+		// ArticleRepo (add)
 		articleRepo.add(new Article("R0MJW", "Auriculares Bluetooth", "Auriculares inalámbricos con cancelación de ruido", 100f, 30));
 		articleRepo.add(new Article("VX59I", "Smartwatch", "Reloj inteligente con monitoreo de salud", 150f, 10));
 		articleRepo.add(new Article("JR65F", "Tablet", "Tablet de 10 pulgadas con pantalla HD", 200f, 50));
