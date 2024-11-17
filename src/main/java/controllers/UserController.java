@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.User;
 import repos.UserRepo;
 
-@WebServlet("/user")
+@WebServlet("/users")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -23,14 +23,6 @@ public class UserController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		// User (repo)
-		
-		//UserRepo userRepo = UserRepo.getInstance();
-		
-		//userRepo.add(new User("1", "1", "Employee", 0.0f));
-
 		System.out.println("UserController...");
 		userRepo.viewList();		
 	}
@@ -40,11 +32,10 @@ public class UserController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		// User (repo)
-		//UserRepo userRepo = UserRepo.getInstance();
-		
-		userRepo.add(new User(username, password, "Client", 100.0f));
+		// UserRepo (add user)
+		userRepo.add(new User(username, password, "Client", 1000.0f));
 
+		// UserRepo (view list)
 		userRepo.viewList();
 	}
 }

@@ -16,21 +16,25 @@ public class ContextListener implements ServletContextListener {
     }
     
     public void contextInitialized(ServletContextEvent sce)  {
+    	// Starting
     	System.out.println("App Starting...");
+
     	
-		// UserRepo (add users)
+    	// UserRepo (instance)
 		UserRepo userRepo = UserRepo.getInstance();
 		
+		// UserRepo (add users)
 		userRepo.add(new User("1", "1", "Employee", 0.0f));
 		userRepo.add(new User("2", "2", "Client", 1000.0f));
 
+		// UserRepo (view list)
 		userRepo.viewList();
+
 		
-		// ArticleRepo (add articles)
+		// ArticleRepo (instance)
 		ArticleRepo articleRepo = ArticleRepo.getInstance();
 
-		//articleRepo.add(new Article("1", "A", "B", 1.0f, 1));
-		
+		// ArticleRepo (add articles)
 		articleRepo.add(new Article("R0MJW", "Auriculares Bluetooth", "Auriculares inalámbricos con cancelación de ruido", 99.99f, 30));
 		articleRepo.add(new Article("VX59I", "Smartwatch", "Reloj inteligente con monitoreo de salud", 149.49f, 10));
 		articleRepo.add(new Article("JR65F", "Tablet", "Tablet de 10 pulgadas con pantalla HD", 199.99f, 50));
@@ -42,10 +46,12 @@ public class ContextListener implements ServletContextListener {
 		articleRepo.add(new Article("NSPVQ", "Monitor", "Monitor 4K UHD de 27 pulgadas", 249.99f, 30));
 		articleRepo.add(new Article("6PWFF", "Cargador Portátil", "Batería externa de 20000mAh", 29.99f, 20));
 		
+		// ArticleRepo (view list)
 		articleRepo.viewList();
     }
 
     public void contextDestroyed(ServletContextEvent sce)  {
+    	// Shutdown
     	System.out.println("App Shutdown...");
     }
 }
