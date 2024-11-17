@@ -10,7 +10,7 @@ public class CartTest {
 		CartRepo cartRepo = CartRepo.getInstance();
 
 
-		// CartRepo (add articles to users)
+		// CartRepo (add)
 		cartRepo.add(new Cart(1, "LNJMM", 2, 70f));
 		cartRepo.add(new Cart(1, "OTXGM", 3, 90f));
 		cartRepo.add(new Cart(2, "L5BX5", 2, 300f));
@@ -19,29 +19,29 @@ public class CartTest {
 		cartRepo.viewList("add articles to users");
 
 
-		// CartRepo (add articles to users)
+		// CartRepo (add)
 		cartRepo.add(new Cart(1, "OTXGM", 1, 90f));
 		cartRepo.add(new Cart(2, "OTXGM", 1, 90f));
 
 		// CartRepo (view list)
-		cartRepo.viewList("add articles to users");
+		cartRepo.viewList("add articles to users / modify quantity or new");
 
 
-		// CartRepo (edit article)
+		// CartRepo (edit)
 		cartRepo.edit(new Cart(1, "LNJMM", 5, 71f));
 
 		// CartRepo (view list)
 		cartRepo.viewList("edit article LNJMM in user 1, Quantity: 5 and Price: 71");
 
 
-		// CartRepo (delete article)
+		// CartRepo (delete)
 		cartRepo.delete(1, "LNJMM");
 
 		// CartRepo (view list)
 		cartRepo.viewList("delete article LNJMM in user 1");
 
 
-		// CartRepo (empty user)
+		// CartRepo (empty)
 		cartRepo.empty(2);
 
 		// CartRepo (view list)
