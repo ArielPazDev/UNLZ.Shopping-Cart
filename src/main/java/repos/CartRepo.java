@@ -56,9 +56,11 @@ public class CartRepo {
 		.removeIf(c -> c.getIdUser() == idUser);
 	}
 	
-	public void viewList() {
-		System.out.println("List of Carts");
-		System.out.println("-------------");
+	public void viewList(String message) {
+		String title = "List of Carts" + " (" + message + ")";
+		
+		System.out.println(title);
+		System.out.println("-".repeat(title.length()));
 
 		IntStream.range(0, list.size())
 				.forEach(
