@@ -24,11 +24,11 @@ public class ContextListener implements ServletContextListener {
 		UserRepo userRepo = UserRepo.getInstance();
 
 		// UserRepo (add)
-		userRepo.add(new User("1", "1", "Employee", 0.0f));
-		userRepo.add(new User("2", "2", "Client", 1000.0f));
+		userRepo.add(new User("1", "1", "Ana", "Employee", 0.0f));
+		userRepo.add(new User("2", "2", "Jorge", "Client", 1000.0f));
 
-		// UserRepo (view list)
-		userRepo.viewList();
+		// UserRepo (view)
+		userRepo.view("add users");
 
 
 		// ArticleRepo (instance)
@@ -46,8 +46,8 @@ public class ContextListener implements ServletContextListener {
 		articleRepo.add(new Article("NSPVQ", "Monitor", "Monitor 4K UHD de 27 pulgadas", 250f, 30));
 		articleRepo.add(new Article("6PWFF", "Cargador Portátil", "Batería externa de 20000mAh", 30f, 20));
 
-		// ArticleRepo (view list)
-		articleRepo.viewList("add articles");
+		// ArticleRepo (view)
+		articleRepo.view("add articles");
     }
 
     public void contextDestroyed(ServletContextEvent sce)  {

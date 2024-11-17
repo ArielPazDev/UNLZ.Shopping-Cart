@@ -5,18 +5,32 @@ public class User {
 	private boolean active;
 	private String username;
 	private String password;
+	private String name;
 	private String rol;
 	private double money;
 
-	public User(String username, String password, String rol, double money) {
+	public User(String username, String password, String name, String rol, double money) {
 		super();
 
 		this.active = true;
 		this.username = username;
 		this.password = password;
+		this.name = name;
 		this.rol = rol;
 		this.money = money;
 	}
+	
+	public User(int idUser, boolean active, String username, String password, String name, String rol, double money) {
+		super();
+
+		this.idUser = idUser;
+		this.active = active;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.rol = rol;
+		this.money = money;
+	}	
 
 	public int getIdUser() {
 		return idUser;
@@ -26,7 +40,7 @@ public class User {
 		this.idUser = idUser;
 	}
 
-	public boolean isActive() {
+	public boolean getActive() {
 		return active;
 	}
 
@@ -50,6 +64,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getRol() {
 		return rol;
 	}
@@ -64,5 +86,15 @@ public class User {
 
 	public void setMoney(double money) {
 		this.money = money;
+	}
+	
+	public void setUser(User user) {
+		this.idUser = user.getIdUser();
+		this.active = user.getActive();
+		this.username = user.getUsername();
+		this.password = user.getPassword();
+		this.name = user.getName();
+		this.rol = user.getRol();
+		this.money = user.getMoney();		
 	}
 }

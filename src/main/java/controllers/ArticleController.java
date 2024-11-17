@@ -22,8 +22,8 @@ public class ArticleController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ArticleRepo (view list)
-		articleRepo.viewList("UserController");
+		// ArticleRepo (view)
+		articleRepo.view("ArticleController");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

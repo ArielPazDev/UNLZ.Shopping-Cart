@@ -56,7 +56,7 @@ public class CartRepo {
 		.removeIf(c -> c.getIdUser() == idUser);
 	}
 	
-	public void viewList(String message) {
+	public void view(String message) {
 		String title = "List of Carts" + " (" + message + ")";
 		
 		System.out.println(title);

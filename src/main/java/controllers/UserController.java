@@ -23,19 +23,18 @@ public class UserController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("UserController...");
-		userRepo.viewList();		
+		// UserRepo (view)
+		userRepo.view("UserController");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Params
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String money = request.getParameter("money");
 		
-		// UserRepo (add user)
-		userRepo.add(new User(username, password, "Client", 1000.0f));
-
-		// UserRepo (view list)
-		userRepo.viewList();
+		// UserRepo (add)
+		userRepo.add(new User(username, password, name, "Client", Double.parseDouble(money)));
 	}
 }

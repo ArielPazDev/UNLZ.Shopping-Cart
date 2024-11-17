@@ -14,28 +14,28 @@ public class ArticleTest {
 		articleRepo.add(new Article("OTXGM", "Disco SSD", "Disco de estado sólido de 1TB", 90f, 60));
 		articleRepo.add(new Article("5TW1L", "Laptop", "Laptop ligera con procesador Intel i7", 800f, 30));
 
-		// ArticleRepo (view list)
-		articleRepo.viewList("add articles");
+		// ArticleRepo (view)
+		articleRepo.view("add articles");
 
 
 		// ArticleRepo (add)
 		articleRepo.add(new Article("LNJMM", "Teclado Mecánico", "Teclado mecánico RGB para gaming", 80f, 30));
 
-		// ArticleRepo (view list)
-		articleRepo.viewList("add article / 'Code Article: LNJMM' discarded as existing");
+		// ArticleRepo (view)
+		articleRepo.view("add article / 'Code Article: LNJMM' discarded as existing");
 
 
 		// ArticleRepo (edit)
 		articleRepo.edit(new Article("LNJMM", "Teclado Mecánico", "Teclado mecánico RGB para gaming", 80f, 30));
 
-		// ArticleRepo (view list)
-		articleRepo.viewList("edit 'Price: 80' and 'Stock: 30' in 'Code Article: LNJMM'");
+		// ArticleRepo (view)
+		articleRepo.view("edit 'Price: 80' and 'Stock: 30' in 'Code Article: LNJMM'");
 
 
 		// ArticleRepo (delete)
 		articleRepo.delete("LNJMM");
 
-		// ArticleRepo (view list)
-		articleRepo.viewList("delete 'Code Article: LNJMM'");
+		// ArticleRepo (view)
+		articleRepo.view("delete 'Code Article: LNJMM'");
 	}
 }

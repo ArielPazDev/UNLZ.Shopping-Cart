@@ -7,16 +7,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import repos.CartRepo;
+
 @WebServlet("/carts")
 public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	private CartRepo cartRepo;
+	
     public CartController() {
         super();
+        
+        this.cartRepo = CartRepo.getInstance();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// CartRepo (view)
+		cartRepo.view("CartController");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -45,7 +45,7 @@ public class ArticleRepo {
 		.removeIf(a -> a.getCodeArticle() == codeArticle);
 	}
 
-	public void viewList(String message) {
+	public void view(String message) {
 		String title = "List of Articles" + " (" + message + ")";
 		
 		System.out.println(title);
