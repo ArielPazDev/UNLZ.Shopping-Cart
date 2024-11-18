@@ -17,7 +17,7 @@ public class ContextListener implements ServletContextListener {
     
     public void contextInitialized(ServletContextEvent sce)  {
     	// Starting
-    	System.out.println("App Starting...");
+    	System.out.println("App Starting...\n");
 
 
     	// UserRepo (instance)
@@ -28,7 +28,7 @@ public class ContextListener implements ServletContextListener {
 		userRepo.add(new User("2", "2", "Jorge", "Client", 1000.0f));
 
 		// UserRepo (view)
-		userRepo.view("add users");
+		userRepo.view("add initial users");
 
 
 		// ArticleRepo (instance)
@@ -47,11 +47,11 @@ public class ContextListener implements ServletContextListener {
 		articleRepo.add(new Article("6PWFF", "Cargador Portátil", "Batería externa de 20000mAh", 30f, 20));
 
 		// ArticleRepo (view)
-		articleRepo.view("add articles");
+		articleRepo.view("add initial articles");
     }
 
     public void contextDestroyed(ServletContextEvent sce)  {
     	// Shutdown
-    	System.out.println("App Shutdown...");
+    	System.out.println("App Shutdown...\n");
     }
 }
