@@ -5,7 +5,7 @@ public class Cart {
 	private String codeArticle;
 	private int quantity;
 	private double price;
-	private double moneySubTotal;
+	private double subTotal;
 
 	public Cart(int idUser, String codeArticle, int quantity, double price) {
 		super();
@@ -14,7 +14,7 @@ public class Cart {
 		this.codeArticle = codeArticle;
 		this.quantity = quantity;
 		this.price = price;
-		this.moneySubTotal = quantity * price;
+		this.subTotal = quantity * price;
 	}
 
 	public int getIdUser() {
@@ -49,12 +49,12 @@ public class Cart {
 		this.price = price;
 	}
 
-	public double getMoneySubTotal() {
-		return moneySubTotal;
+	public double getSubTotal() {
+		return subTotal;
 	}
 
-	public void setMoneySubTotal(double moneySubTotal) {
-		this.moneySubTotal = moneySubTotal;
+	public void setSubTotal(double moneySubTotal) {
+		this.subTotal = moneySubTotal;
 	}
 
 	public void setCart(Cart cart) {
@@ -62,6 +62,6 @@ public class Cart {
 		this.codeArticle = cart.getCodeArticle();
 		this.quantity = cart.getQuantity();
 		this.price = cart.getPrice();
-		this.moneySubTotal = cart.getQuantity() * cart.getPrice();
+		this.subTotal = cart.getQuantity() * cart.getPrice();
 	}
 }

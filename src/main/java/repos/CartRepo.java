@@ -33,7 +33,7 @@ public class CartRepo {
 				c -> {
 					c.setQuantity(c.getQuantity() + cart.getQuantity());
 					c.setPrice(cart.getPrice());
-					c.setMoneySubTotal(c.getQuantity() * cart.getPrice());
+					c.setSubTotal(c.getQuantity() * cart.getPrice());
 					},
 				() -> list.add(cart)
 				);
@@ -70,7 +70,7 @@ public class CartRepo {
 								"Code Article: " + list.get(i).getCodeArticle() + " | " + 
 								"Quantity: " + list.get(i).getQuantity() + " | " +
 								"Price: " + String.format("%.2f", list.get(i).getPrice()) + " | " +
-								"Money SubTotal: " + String.format("%.2f", list.get(i).getMoneySubTotal())
+								"Money SubTotal: " + String.format("%.2f", list.get(i).getSubTotal())
 						)
 				);
 
