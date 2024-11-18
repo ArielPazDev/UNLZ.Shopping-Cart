@@ -30,12 +30,12 @@ public class CartRepo {
 				.findFirst();
 
 		cartFind.ifPresentOrElse(
-				c -> {
-					c.setQuantity(c.getQuantity() + cart.getQuantity());
-					c.setPrice(cart.getPrice());
-					c.setSubTotal(c.getQuantity() * cart.getPrice());
-					},
-				() -> list.add(cart)
+					c -> {
+						c.setQuantity(c.getQuantity() + cart.getQuantity());
+						c.setPrice(cart.getPrice());
+						c.setSubTotal(c.getQuantity() * cart.getPrice());
+						},
+					() -> list.add(cart)
 				);
 	}
 
