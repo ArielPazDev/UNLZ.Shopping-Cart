@@ -9,12 +9,12 @@ public class Sale {
 	private int quantity;
 	private double total;
 
-	public Sale(int idSale, int idUser, LocalDateTime time, int quantity, double total) {
+	public Sale(int idSale, int idUser, int quantity, double total) {
 		super();
 
 		this.idSale = idSale;
 		this.idUser = idUser;
-		this.time = time;
+		this.time = LocalDateTime.now();
 		this.quantity = quantity;
 		this.total = total;
 	}
