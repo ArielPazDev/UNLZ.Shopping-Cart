@@ -70,7 +70,7 @@ public class CartRepo {
 								"Code Article: " + list.get(i).getCodeArticle() + " | " + 
 								"Quantity: " + list.get(i).getQuantity() + " | " +
 								"Price: " + String.format("%.2f", list.get(i).getPrice()) + " | " +
-								"Money SubTotal: " + String.format("%.2f", list.get(i).getSubTotal())
+								"SubTotal: " + String.format("%.2f", list.get(i).getSubTotal())
 						)
 				);
 

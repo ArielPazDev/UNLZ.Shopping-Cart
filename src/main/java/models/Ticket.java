@@ -8,7 +8,7 @@ public class Ticket {
 	private double price;
 	private double subTotal;
 
-	public Ticket(int idTicket, int idUser, String codeArticle, int quantity, double price) {
+	public Ticket(int idTicket, int idUser, String codeArticle, int quantity, double price, double subTotal) {
 		super();
 
 		this.idTicket = idTicket;
@@ -16,7 +16,7 @@ public class Ticket {
 		this.codeArticle = codeArticle;
 		this.quantity = quantity;
 		this.price = price;
-		this.subTotal = quantity * price;
+		this.subTotal = subTotal;
 	}
 
 	public int getIdTicket() {
@@ -63,7 +63,7 @@ public class Ticket {
 		return subTotal;
 	}
 
-	public void setSubTotal(double moneySubTotal) {
-		this.subTotal = moneySubTotal;
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
 	}
 }
