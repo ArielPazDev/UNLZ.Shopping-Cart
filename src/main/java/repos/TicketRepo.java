@@ -2,6 +2,7 @@ package repos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import models.Ticket;
@@ -26,6 +27,29 @@ public class TicketRepo {
 		list.add(ticket);
 	}
 
+	public void filterIdTicket(int idTicket) {
+		List<Ticket> l = list
+				.stream()
+				.filter(t -> t.getIdTicket() == idTicket)
+				.collect(Collectors.toList());
+		
+		IntStream.range(0, l.size())
+		.forEach(
+				i -> System.out.println(
+						"(" + i + ") -> " + 
+						"ID Ticket: " + l.get(i).getIdTicket() + " | " + 
+						"ID User: " + l.get(i).getIdUser() + " | " + 
+						"Code Article: " + l.get(i).getCodeArticle() + " | " + 
+						"Quantity: " + l.get(i).getQuantity() + " | " +
+						"Price: " + String.format("%.2f", l.get(i).getPrice()) + " | " +
+						"SubTotal: " + String.format("%.2f", l.get(i).getSubTotal())
+				)
+		);
+
+System.out.println("");		
+		
+	}
+	
 	public void view(String message) {
 		String title = "List of Tickets" + " (" + message + ")";
 

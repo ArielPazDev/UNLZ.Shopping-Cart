@@ -18,5 +18,9 @@ public class TicketTest {
 
 		// TicketRepo (view)
 		ticketRepo.view("add ticket to users");
+		
+		
+		// TicketRepo (filterIdTicket)
+		ticketRepo.filterIdTicket(1);
 	}
 }
