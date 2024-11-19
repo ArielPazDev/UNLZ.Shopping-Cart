@@ -18,9 +18,13 @@ public class TicketTest {
 
 		// TicketRepo (view)
 		ticketRepo.view("add ticket to users");
-		
-		
-		// TicketRepo (filterIdTicket)
-		ticketRepo.filterIdTicket(1);
+
+
+		// TicketRepo (view)
+		ticketRepo.view(ticketRepo.filterIdTicket(1), "filtered by 'ID Ticket: 1'");
+
+
+		// TicketRepo (view)
+		ticketRepo.view(ticketRepo.filterIdUser(2), "filtered by 'ID User: 2'");		
 	}
 }

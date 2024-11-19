@@ -44,7 +44,11 @@ public class TicketRepo {
 
 		return filter;	
 	}
-	
+
+	public void view(String message) {
+		view(list, message);
+	}
+
 	public void view(List<Ticket> list, String message) {
 		String title = "List of Tickets" + " (" + message + ")";
 
