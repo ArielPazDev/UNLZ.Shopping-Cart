@@ -27,30 +27,25 @@ public class TicketRepo {
 		list.add(ticket);
 	}
 
-	public void filterIdTicket(int idTicket) {
-		List<Ticket> l = list
+	public List<Ticket> filterIdTicket(int idTicket) {
+		List<Ticket> filter = list
 				.stream()
 				.filter(t -> t.getIdTicket() == idTicket)
 				.collect(Collectors.toList());
-		
-		IntStream.range(0, l.size())
-		.forEach(
-				i -> System.out.println(
-						"(" + i + ") -> " + 
-						"ID Ticket: " + l.get(i).getIdTicket() + " | " + 
-						"ID User: " + l.get(i).getIdUser() + " | " + 
-						"Code Article: " + l.get(i).getCodeArticle() + " | " + 
-						"Quantity: " + l.get(i).getQuantity() + " | " +
-						"Price: " + String.format("%.2f", l.get(i).getPrice()) + " | " +
-						"SubTotal: " + String.format("%.2f", l.get(i).getSubTotal())
-				)
-		);
 
-System.out.println("");		
-		
+		return filter;	
+	}
+
+	public List<Ticket> filterIdUser(int idUser) {
+		List<Ticket> filter = list
+				.stream()
+				.filter(t -> t.getIdUser() == idUser)
+				.collect(Collectors.toList());
+
+		return filter;	
 	}
 	
-	public void view(String message) {
+	public void view(List<Ticket> list, String message) {
 		String title = "List of Tickets" + " (" + message + ")";
 
 		System.out.println(title);
