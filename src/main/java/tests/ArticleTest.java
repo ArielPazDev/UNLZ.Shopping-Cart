@@ -22,20 +22,20 @@ public class ArticleTest {
 		articleRepo.add(new Article("LNJMM", "Teclado Mecánico", "Teclado mecánico RGB para gaming", 80f, 30));
 
 		// ArticleRepo (list)
-		articleRepo.list("add article / 'Code Article: LNJMM' discarded as existing");
+		articleRepo.list("add article / 'ID Article: LNJMM' discarded as existing");
 
 
-		// ArticleRepo (edit)
-		articleRepo.edit(new Article("LNJMM", "Teclado Mecánico", "Teclado mecánico RGB para gaming", 80f, 30));
+		// ArticleRepo (update)
+		articleRepo.update(new Article("LNJMM", "Teclado Mecánico", "Teclado mecánico RGB para gaming", 80f, 30));
 
 		// ArticleRepo (list)
-		articleRepo.list("edit 'Price: 80' and 'Stock: 30' in 'Code Article: LNJMM'");
+		articleRepo.list("update 'Price: 80' and 'Stock: 30' in 'ID Article: LNJMM'");
 
 
 		// ArticleRepo (delete)
 		articleRepo.delete("LNJMM");
 
 		// ArticleRepo (list)
-		articleRepo.list("delete 'Code Article: LNJMM'");
+		articleRepo.list("delete 'Active: false' in 'ID Article: LNJMM'");
 	}
 }

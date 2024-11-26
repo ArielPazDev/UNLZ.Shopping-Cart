@@ -53,8 +53,13 @@ public class ArticleRepo {
     }
 
     public void delete(String idArticle) {
+	//list
+	//.removeIf(a -> a.getIdArticle().equals(idArticle));
+	
 	list
-	.removeIf(a -> a.getIdArticle().equals(idArticle));
+	.stream()
+	.filter(a -> a.getIdArticle().equals(idArticle))
+	.forEach(a -> a.setActive(false));	
     }
 
     public void list(String message) {
@@ -67,7 +72,8 @@ public class ArticleRepo {
 	.forEach(
 		i -> System.out.println(
 			"(" + i + ") -> " +
-			"Code Article: " + list.get(i).getIdArticle() + " | " + 
+			"ID Article: " + list.get(i).getIdArticle() + " | " + 
+			"Active: " + list.get(i).getActive() + " | " + 
 			"Name: " + list.get(i).getName() + " | " + 
 			"Description: " + list.get(i).getDescription() + " | " + 
 			"Price: " + String.format("%.2f", list.get(i).getPrice()) + " | " + 

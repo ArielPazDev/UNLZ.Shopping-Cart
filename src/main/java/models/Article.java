@@ -2,6 +2,7 @@ package models;
 
 public class Article {
     private String idArticle;
+    private boolean active;
     private String name;
     private String description;
     private double price;
@@ -11,6 +12,7 @@ public class Article {
 	super();
 
 	this.idArticle = idArticle;
+	this.active = true;
 	this.name = name;
 	this.description = description;
 	this.price = price;
@@ -23,6 +25,14 @@ public class Article {
 
     public void setIdArticle(String idArticle) {
 	this.idArticle = idArticle;
+    }
+
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public String getName() {
@@ -59,6 +69,7 @@ public class Article {
 
     public void setArticle(Article article) {
 	this.idArticle = article.getIdArticle();
+	this.active = article.getActive();
 	this.name = article.getName();
 	this.description = article.getDescription();
 	this.price = article.getPrice();
