@@ -21,7 +21,7 @@ public class TicketRepo {
 			singleton = new TicketRepo();
 
 		return singleton;
-	}	
+	}
 
 	public void add(Ticket ticket) {
 		list.add(ticket);

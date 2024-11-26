@@ -8,8 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/")
+import models.Cart;
+
+@WebServlet("/index")
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -18,14 +21,39 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	// Session
+    	HttpSession session = request.getSession();
+
+    	// Character
     	response.setCharacterEncoding("UTF-8");
     	
     	response.setHeader("Content-Type", "text/plain; charset=UTF-8");
+    	
+    	String id = session.getId();
 		
-    	PrintWriter print = response.getWriter();
+    	session.setAttribute("nombre", "Ariel");
+    	
+    	/*// Cart
+    	Cart cart;
+    	
+    	if (session.getAttribute("cart") == null) {
+    		cart = new Cart();
+    		
+    		session.setAttribute("cart", cart);
+    	} else {
+    		cart = (Cart) session.getAttribute("cart");
+    	}*/
+    	
+    	
+    	
+    	
+    	PrintWriter pr = response.getWriter();
 		
-    	print.append("request.getContextPath(): ").append(request.getContextPath() + "\n");
-		print.append("request.getServletPath(): ").append(request.getServletPath() + "\n");
-		print.append("request.getPathInfo(): ").append(request.getPathInfo() + "\n");
+    	pr.append("HomeController\n");
+    	pr.append("request.getContextPath(): ").append(request.getContextPath() + "\n");
+		pr.append("request.getServletPath(): ").append(request.getServletPath() + "\n");
+		pr.append("request.getPathInfo(): ").append(request.getPathInfo() + "\n");
+		pr.append("Sesion ID: ").append(id + "\n");
+		pr.append("Sesion Nombre: ").append(session.getAttribute("nombre") + "\n");
 	}
 }

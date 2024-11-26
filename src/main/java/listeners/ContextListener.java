@@ -46,8 +46,8 @@ public class ContextListener implements ServletContextListener {
 		articleRepo.add(new Article("NSPVQ", "Monitor", "Monitor 4K UHD de 27 pulgadas", 250f, 30));
 		articleRepo.add(new Article("6PWFF", "Cargador Portátil", "Batería externa de 20000mAh", 30f, 20));
 
-		// ArticleRepo (view)
-		articleRepo.view("add initial articles");
+		// ArticleRepo (list)
+		articleRepo.list("add initial articles");
     }
 
     public void contextDestroyed(ServletContextEvent sce)  {
