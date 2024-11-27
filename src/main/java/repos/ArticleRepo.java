@@ -2,6 +2,7 @@ package repos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import models.Article;
@@ -23,18 +24,10 @@ public class ArticleRepo {
     }
 
     public List<Article> array() {
-	return list;
-    }
-
-    public void add(Article article) {
-	boolean exists = list
+	return list
 		.stream()
-		.anyMatch(a -> a.getIdArticle() == article.getIdArticle());
-
-	if (exists)
-	    return;
-
-	list.add(article);
+		.filter(a -> a.getActive() == true)
+		.collect(Collectors.toList());
     }
 
     public Article find(String idArticle) {
@@ -43,6 +36,17 @@ public class ArticleRepo {
 		.filter(a -> a.getIdArticle().equals(idArticle))
 		.findFirst()
 		.orElse(null);
+    }
+    
+    public void add(Article article) {
+	boolean exists = list
+		.stream()
+		.anyMatch(a -> a.getIdArticle().equals(article.getIdArticle()));
+
+	if (exists)
+	    return;
+
+	list.add(article);
     }
 
     public void update(Article article) {
@@ -53,9 +57,6 @@ public class ArticleRepo {
     }
 
     public void delete(String idArticle) {
-	//list
-	//.removeIf(a -> a.getIdArticle().equals(idArticle));
-	
 	list
 	.stream()
 	.filter(a -> a.getIdArticle().equals(idArticle))
@@ -82,5 +83,10 @@ public class ArticleRepo {
 	);
 
 	System.out.println("");
+    }
+
+    @Override
+    public String toString() {
+	return "ArticleRepo [list=" + list + "]";
     }
 }

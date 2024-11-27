@@ -7,13 +7,13 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Artículos (borrar)</h1>
+	<h1>Usuarios (borrar)</h1>
 	
 	<form method="POST" action="delete">
-		<input name="idArticle" type="hidden" value="${idArticle}">
+		<input name="idUser" type="hidden" value="${idUser}">
 		
-		<a href="../articles" class="cancel-button">Cancelar</a>
-		<button type="submit">Confirmar el borrado del artículo ${idArticle}</button>
+		<a href="../users" class="cancel-button">Cancelar</a>
+		<button type="submit">Confirmar el borrado del usuario ID ${idUser}</button>
 	</form>
 	
 </body>
