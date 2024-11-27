@@ -69,7 +69,7 @@ public class UserController extends HttpServlet {
 
     private void getDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Attribute
-	request.setAttribute("idUser", request.getParameter("id"));
+	request.setAttribute("user", userRepo.find(Integer.parseInt(request.getParameter("id"))));	
 
 	// Dispatcher
 	request.getRequestDispatcher("/views/users/delete.jsp").forward(request, response);
@@ -99,10 +99,9 @@ public class UserController extends HttpServlet {
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
 	String rol = request.getParameter("rol");
-	double money = Double.parseDouble(request.getParameter("money"));
 
 	// UserRepo (add)
-	userRepo.add(new User(name, username, password, rol, money));
+	userRepo.add(new User(name, username, password, rol));
 
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());
@@ -114,11 +113,9 @@ public class UserController extends HttpServlet {
 	String name = request.getParameter("name");
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
-	String rol = request.getParameter("rol");
-	double money = Double.parseDouble(request.getParameter("money"));
 
 	// UserRepo (update)
-	userRepo.update(new User(idUser, name, username, password, rol, money));
+	userRepo.update(new User(idUser, name, username, password));
 
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());

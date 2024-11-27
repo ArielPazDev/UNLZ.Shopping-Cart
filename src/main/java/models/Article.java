@@ -68,8 +68,6 @@ public class Article {
     }
 
     public void setArticle(Article article) {
-	this.idArticle = article.getIdArticle();
-	this.active = article.getActive();
 	this.name = article.getName();
 	this.description = article.getDescription();
 	this.price = article.getPrice();

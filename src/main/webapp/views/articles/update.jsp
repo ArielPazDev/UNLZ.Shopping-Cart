@@ -7,13 +7,10 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Artículos (editar)</h1>
+	<h1>Artículo ${article.idArticle} (editar)</h1>
 
 	<form method="POST" action="update">
-		<div>
-			<label for="idArticle">Código</label>
-			<input id="idArticle" name="idArticle" type="text" placeholder="Ingresa su Código" value="${article.idArticle}" readonly>
-		</div>
+		<input name="idArticle" type="hidden" value="${article.idArticle}">
 		<div>
 			<label for="name">Nombre</label>
 			<input id="name" name="name" type="text" placeholder="Ingresa su Nombre" value="${article.name}" required>

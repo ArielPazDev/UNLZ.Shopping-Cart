@@ -9,19 +9,32 @@ public class User {
     private String rol;
     private double money;
 
-    public User(String name, String username, String password, String rol, double money) {
+    public User(String name, String username, String password, String rol) {
 	super();
-
+	
 	this.idUser = 0;
 	this.active = true;
 	this.name = name;
 	this.username = username;
 	this.password = password;
 	this.rol = rol;
-	this.money = money;
+	this.money = 0;
+    }
+    
+    
+    public User(int idUser, String name, String username, String password) {
+	super();
+	
+	this.idUser = idUser;
+	this.active = true;
+	this.name = name;
+	this.username = username;
+	this.password = password;
+	this.rol = "";
+	this.money = 0;
     }
 
-    public User(int idUser, String name, String username, String password, String rol, double money) {
+    /*public User(int idUser, String name, String username, String password, String rol, double money) {
 	super();
 
 	this.idUser = idUser;
@@ -31,7 +44,7 @@ public class User {
 	this.password = password;
 	this.rol = rol;
 	this.money = money;
-    }
+    }*/
 
     public int getIdUser() {
 	return idUser;
@@ -90,12 +103,8 @@ public class User {
     }
 
     public void setUser(User user) {
-	this.idUser = user.getIdUser();
-	this.active = user.getActive();
 	this.name = user.getName();
 	this.username = user.getUsername();
 	this.password = user.getPassword();
-	this.rol = user.getRol();
-	this.money = user.getMoney();
     }
 }

@@ -24,9 +24,9 @@ public class ContextListener implements ServletContextListener {
 		UserRepo userRepo = UserRepo.getInstance();
 
 		// UserRepo (add)
-		userRepo.add(new User("Ana", "1", "1", "Empleado", 0.0f));
-		userRepo.add(new User("Jorge", "2", "2", "Cliente", 10000.0f));
-		userRepo.add(new User("Luciana", "3", "3", "Cliente", 20000f));
+		userRepo.add(new User("Ana", "1", "1", "Empleado"));
+		userRepo.add(new User("Jorge", "2", "2", "Cliente"));
+		userRepo.add(new User("Luciana", "3", "3", "Cliente"));
 
 		// UserRepo (list)
 		userRepo.list("add initial users");

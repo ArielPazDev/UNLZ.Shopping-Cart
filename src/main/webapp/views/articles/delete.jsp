@@ -7,7 +7,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Artículos (borrar)</h1>
+	<h1>Artículo ${idArticle} (borrar)</h1>
 	
 	<form method="POST" action="delete">
 		<input name="idArticle" type="hidden" value="${idArticle}">

@@ -30,10 +30,6 @@
 				<option value="Cliente">Cliente</option>
 			</select>
 		</div>
-		<div>
-			<label for="money">Dinero</label>
-			<input id="money" name="money" type="text" placeholder="Ingresa su Dinero" required>
-		</div>		
 		<a href="../users" class="cancel-button">Cancelar</a>
 		<button type="submit">Crear</button>
 	</form>
