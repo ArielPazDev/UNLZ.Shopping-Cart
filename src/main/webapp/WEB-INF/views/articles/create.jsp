@@ -31,6 +31,7 @@
 			<label for="stock">Stock</label>
 			<input id="stock" name="stock" type="text" placeholder="Ingresa su Stock" required>
 		</div>
+
 		<a href="../articles" class="cancel-button">Cancelar</a>
 		<button type="submit">Crear</button>
 	</form>

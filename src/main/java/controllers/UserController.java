@@ -69,7 +69,7 @@ public class UserController extends HttpServlet {
 
     private void getDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Attribute
-	request.setAttribute("user", userRepo.find(Integer.parseInt(request.getParameter("id"))));	
+	request.setAttribute("user", userRepo.find(Integer.parseInt(request.getParameter("id"))));
 
 	// Dispatcher
 	request.getRequestDispatcher("/WEB-INF/views/users/delete.jsp").forward(request, response);
@@ -105,7 +105,7 @@ public class UserController extends HttpServlet {
 
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());
-    } 
+    }
     
     private void setUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Parameters

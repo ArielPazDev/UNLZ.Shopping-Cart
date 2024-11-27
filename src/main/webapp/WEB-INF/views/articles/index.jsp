@@ -30,7 +30,7 @@
 					<td style="text-align: center; font-weight: bold">${article.idArticle}</td>
 					<td style="text-align: left">${article.name}</td>
 					<td style="text-align: left">${article.description}</td>
-					<td style="text-align: right"><fmt:formatNumber value="${article.price}" type="number" maxFractionDigits="2" minFractionDigits="2" /></td>
+					<td style="text-align: right">$ <fmt:formatNumber value="${article.price}" type="number" maxFractionDigits="2" minFractionDigits="2" /></td>
 					<td style="text-align: right">${article.stock}</td>
 					<td style="text-align: center">
 						<a href="articles/update?id=${article.idArticle}" style="margin: 0 .5rem 0 0"><img src="${contextPath}/img/svg/edit.svg" alt="Edit" width="32" height="32"></a>

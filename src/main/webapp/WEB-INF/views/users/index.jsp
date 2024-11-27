@@ -33,7 +33,7 @@
 					<td style="text-align: left">${user.username}</td>
 					<td style="text-align: center">************</td>
 					<td style="text-align: center">${user.rol}</td>
-					<td style="text-align: right"><fmt:formatNumber value="${user.money}" type="number" maxFractionDigits="2" minFractionDigits="2" /></td>
+					<td style="text-align: right">$ <fmt:formatNumber value="${user.money}" type="number" maxFractionDigits="2" minFractionDigits="2" /></td>
 					<td style="text-align: center">
 						<a href="users/update?id=${user.idUser}" style="margin: 0 .5rem 0 0"><img src="${contextPath}/img/svg/edit.svg" alt="Edit" width="32" height="32"></a>
 						<a href="users/delete?id=${user.idUser}"><img src="${contextPath}/img/svg/delete.svg" alt="Delete" width="32" height="32"></a>

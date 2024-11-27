@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +22,7 @@
 			<label for="password">Contraseña</label>
 			<input id="password" name="password" type="password" placeholder="Ingresa su Contraseña" value="${user.password}" required>
 		</div>
+
 		<a href="../users" class="cancel-button">Cancelar</a>
 		<button type="submit">Guardar</button>
 	</form>

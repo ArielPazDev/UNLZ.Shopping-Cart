@@ -67,6 +67,31 @@ public class UserRepo {
 	.forEach(u -> u.setActive(false));
     }
 
+    public void deposit(int idUser, double money) {
+	if (money < 0f)
+	    return;
+
+	list
+	.stream()
+	.filter(u -> u.getIdUser() == idUser)
+	.forEach(u -> u.setMoney(u.getMoney() + money));	
+    }
+    
+    public void transfer(int idUserSender, int idUserReceptor, double money) {
+	if (idUserSender == idUserReceptor || money < 0f)
+	    return;
+	
+	list
+	.stream()
+	.filter(u -> u.getIdUser() == idUserSender)
+	.forEach(u -> u.setMoney(u.getMoney() - money));
+	
+	list
+	.stream()
+	.filter(u -> u.getIdUser() == idUserReceptor)
+	.forEach(u -> u.setMoney(u.getMoney() + money));	
+    }
+    
     public void list(String message) {
 	String title = "List of Users" + " (" + message + ")";
 
