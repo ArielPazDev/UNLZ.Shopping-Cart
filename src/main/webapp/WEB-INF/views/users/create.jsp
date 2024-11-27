@@ -7,7 +7,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Usuarios (crear)</h1>
+	<h1>Usuario (crear)</h1>
 
 	<form method="POST" action="create">
 		<div>

@@ -51,12 +51,12 @@ public class ArticleController extends HttpServlet {
 	request.setAttribute("articles", articleRepo.array());
 
 	// Dispatcher
-	request.getRequestDispatcher("/views/articles/index.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/articles/index.jsp").forward(request, response);
     }
 
     private void getCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Dispatcher
-	request.getRequestDispatcher("/views/articles/create.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/articles/create.jsp").forward(request, response);
     }
 
     private void getUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +64,7 @@ public class ArticleController extends HttpServlet {
 	request.setAttribute("article", articleRepo.find(request.getParameter("id")));
 
 	// Dispatcher
-	request.getRequestDispatcher("/views/articles/update.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/articles/update.jsp").forward(request, response);
     }
 
     private void getDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -72,7 +72,7 @@ public class ArticleController extends HttpServlet {
 	request.setAttribute("idArticle", request.getParameter("id"));
 
 	// Dispatcher
-	request.getRequestDispatcher("/views/articles/delete.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/articles/delete.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -7,7 +7,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Artículos (crear)</h1>
+	<h1>Artículo (crear)</h1>
 
 	<form method="POST" action="create">
 		<div>

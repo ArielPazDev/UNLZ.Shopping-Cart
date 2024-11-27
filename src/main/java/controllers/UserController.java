@@ -51,12 +51,12 @@ public class UserController extends HttpServlet {
 	request.setAttribute("users", userRepo.array());
 
 	// Dispatcher
-	request.getRequestDispatcher("/views/users/index.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/users/index.jsp").forward(request, response);
     }
 
     private void getCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Dispatcher
-	request.getRequestDispatcher("/views/users/create.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/users/create.jsp").forward(request, response);
     }
 
     private void getUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +64,7 @@ public class UserController extends HttpServlet {
 	request.setAttribute("user", userRepo.find(Integer.parseInt(request.getParameter("id"))));
 
 	// Dispatcher
-	request.getRequestDispatcher("/views/users/update.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/users/update.jsp").forward(request, response);
     }
 
     private void getDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -72,7 +72,7 @@ public class UserController extends HttpServlet {
 	request.setAttribute("user", userRepo.find(Integer.parseInt(request.getParameter("id"))));	
 
 	// Dispatcher
-	request.getRequestDispatcher("/views/users/delete.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/users/delete.jsp").forward(request, response);
     }    
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
