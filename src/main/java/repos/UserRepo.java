@@ -32,14 +32,6 @@ public class UserRepo {
 		.collect(Collectors.toList());
     }
     
-    public User find(int idUser) {
-	return list
-		.stream()
-		.filter(u -> u.getIdUser() == idUser)
-		.findFirst()
-		.orElse(null);
-    }
-    
     public void add(User user) {
 	boolean exists = list
 		.stream()
@@ -51,6 +43,14 @@ public class UserRepo {
 	user.setIdUser(++id);
 
 	list.add(user);
+    }
+    
+    public User find(int idUser) {
+	return list
+		.stream()
+		.filter(u -> u.getIdUser() == idUser)
+		.findFirst()
+		.orElse(null);
     }
 
     public void update(User user) {
@@ -66,6 +66,14 @@ public class UserRepo {
 	.filter(u -> u.getIdUser() == idUser)
 	.forEach(u -> u.setActive(false));
     }
+    
+    public User signin(String username, String password) {
+	return list
+		.stream()
+		.filter(u -> u.getUsername().equals(username) && u.getPassword().equals(password))
+		.findFirst()
+		.orElse(null);
+    }
 
     public void deposit(int idUser, double money) {
 	if (money < 0f)
@@ -78,9 +86,25 @@ public class UserRepo {
     }
     
     public void transfer(int idUserSender, int idUserReceptor, double money) {
-	if (idUserSender == idUserReceptor || money < 0f)
+	if (idUserSender == idUserReceptor)
 	    return;
-	
+
+	if (money < 0f)
+	    return;
+
+	User userSender = find(idUserSender);
+
+	if (userSender == null)
+	    return;
+
+	if (userSender.getMoney() < money)
+	    return;
+
+	User userReceptor = find(idUserReceptor);
+
+	if (userReceptor == null)
+	    return;
+
 	list
 	.stream()
 	.filter(u -> u.getIdUser() == idUserSender)

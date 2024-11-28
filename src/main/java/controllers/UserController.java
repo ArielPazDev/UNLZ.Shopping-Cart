@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.User;
 import repos.UserRepo;
@@ -25,17 +26,25 @@ public class UserController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	// Character
+	// Session
+	HttpSession session = request.getSession();
+
+	if (session.getAttribute("logged") == null) {
+	    // Redirect (home)
+	    response.sendRedirect(request.getContextPath() + "/home");
+
+	    return;
+	}
+
+	// Character
 	request.setCharacterEncoding("UTF-8");
-    	response.setCharacterEncoding("UTF-8");
-    	
-    	// Attributes
-    	request.setAttribute("contextPath", request.getContextPath());    	
+	response.setCharacterEncoding("UTF-8");
+
+	// Attribute
+	request.setAttribute("contextPath", request.getContextPath());
 
 	// Path
-	String path = Optional
-		.ofNullable(request.getPathInfo())
-		.orElse("/index");
+	String path = Optional.ofNullable(request.getPathInfo()).orElse("/index");
 
 	switch (path) {
 	case "/index" -> getIndex(request, response);
@@ -45,7 +54,7 @@ public class UserController extends HttpServlet {
 	default -> response.sendRedirect(request.getContextPath() + request.getServletPath());
 	}
     }
-    
+
     private void getIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Attribute
 	request.setAttribute("users", userRepo.array());
@@ -73,17 +82,25 @@ public class UserController extends HttpServlet {
 
 	// Dispatcher
 	request.getRequestDispatcher("/WEB-INF/views/users/delete.jsp").forward(request, response);
-    }    
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	// Character
+	// Session
+	HttpSession session = request.getSession();
+
+	if (session.getAttribute("logged") == null) {
+	    // Redirect (home)
+	    response.sendRedirect(request.getContextPath() + "/home");
+
+	    return;
+	}
+
+	// Character
 	request.setCharacterEncoding("UTF-8");
-    	response.setCharacterEncoding("UTF-8");
-    	
+	response.setCharacterEncoding("UTF-8");
+
 	// Path
-	String path = Optional
-		.ofNullable(request.getPathInfo())
-		.orElse("/index");
+	String path = Optional.ofNullable(request.getPathInfo()).orElse("/index");
 
 	switch (path) {
 	case "/create" -> setCreate(request, response);
@@ -92,9 +109,9 @@ public class UserController extends HttpServlet {
 	default -> response.sendRedirect(request.getContextPath() + request.getServletPath());
 	}
     }
-    
+
     private void setCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Parameters
+	// Parameter
 	String name = request.getParameter("name");
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
@@ -106,9 +123,9 @@ public class UserController extends HttpServlet {
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());
     }
-    
+
     private void setUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Parameters
+	// Parameter
 	int idUser = Integer.parseInt(request.getParameter("idUser"));
 	String name = request.getParameter("name");
 	String username = request.getParameter("username");
@@ -120,9 +137,9 @@ public class UserController extends HttpServlet {
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());
     }
-    
+
     private void setDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Parameters
+	// Parameter
 	int idUser = Integer.parseInt(request.getParameter("idUser"));
 
 	// UserRepo (delete)
@@ -130,5 +147,5 @@ public class UserController extends HttpServlet {
 
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());
-    }    
+    }
 }

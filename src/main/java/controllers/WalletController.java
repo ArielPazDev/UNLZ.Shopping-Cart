@@ -25,11 +25,21 @@ public class WalletController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// Session
+	HttpSession session = request.getSession();
+
+	if (session.getAttribute("logged") == null) {
+	    // Redirect (home)
+	    response.sendRedirect(request.getContextPath() + "/home");
+
+	    return;
+	}
+
 	// Character
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
 
-	// Attributes
+	// Attribute
 	request.setAttribute("contextPath", request.getContextPath());
 
 	// Path
@@ -41,41 +51,48 @@ public class WalletController extends HttpServlet {
 	case "/transfer" -> getTransfer(request, response);
 	default -> response.sendRedirect(request.getContextPath() + request.getServletPath());
 	}
-	
+
 	userRepo.list("Update");
     }
-    
+
     private void getIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
 	HttpSession session = request.getSession();
-	session.setAttribute("idUser", 3);
-	
+
 	// Attribute
-	request.setAttribute("user", userRepo.find((int) session.getAttribute("idUser")));	
-	
+	request.setAttribute("user", userRepo.find((int) session.getAttribute("idUser")));
+
 	// Dispatcher
 	request.getRequestDispatcher("/WEB-INF/views/wallets/index.jsp").forward(request, response);
     }
-    
+
     private void getDeposit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Dispatcher
 	request.getRequestDispatcher("/WEB-INF/views/wallets/deposit.jsp").forward(request, response);
     }
-    
+
     private void getTransfer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Dispatcher
 	request.getRequestDispatcher("/WEB-INF/views/wallets/transfer.jsp").forward(request, response);
-    }    
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	// Character
+	// Session
+	HttpSession session = request.getSession();
+
+	if (session.getAttribute("logged") == null) {
+	    // Redirect (home)
+	    response.sendRedirect(request.getContextPath() + "/home");
+
+	    return;
+	}
+
+	// Character
 	request.setCharacterEncoding("UTF-8");
-    	response.setCharacterEncoding("UTF-8");
-    	
+	response.setCharacterEncoding("UTF-8");
+
 	// Path
-	String path = Optional
-		.ofNullable(request.getPathInfo())
-		.orElse("/index");
+	String path = Optional.ofNullable(request.getPathInfo()).orElse("/index");
 
 	switch (path) {
 	case "/deposit" -> setDeposit(request, response);
@@ -83,14 +100,14 @@ public class WalletController extends HttpServlet {
 	default -> response.sendRedirect(request.getContextPath() + request.getServletPath());
 	}
     }
-    
+
     private void setDeposit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
 	HttpSession session = request.getSession();
-	
+
 	int idUser = (int) session.getAttribute("idUser");
-	
-	// Parameters
+
+	// Parameter
 	double money = Double.parseDouble(request.getParameter("money"));
 
 	// UserRepo (deposit)
@@ -99,14 +116,14 @@ public class WalletController extends HttpServlet {
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());
     }
-    
+
     private void setTransfer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
 	HttpSession session = request.getSession();
-	
+
 	int idUserSender = (int) session.getAttribute("idUser");
-	
-	// Parameters
+
+	// Parameter
 	int idUserReceptor = Integer.parseInt(request.getParameter("idUserReceptor"));
 	double money = Double.parseDouble(request.getParameter("money"));
 
@@ -115,5 +132,5 @@ public class WalletController extends HttpServlet {
 
 	// Redirect
 	response.sendRedirect(request.getContextPath() + request.getServletPath());
-    }     
+    }
 }

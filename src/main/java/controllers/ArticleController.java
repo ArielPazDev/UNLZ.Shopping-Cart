@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Article;
 import repos.ArticleRepo;
@@ -25,17 +26,25 @@ public class ArticleController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	// Character
+	// Session
+	HttpSession session = request.getSession();
+
+	if (session.getAttribute("logged") == null) {
+	    // Redirect (home)
+	    response.sendRedirect(request.getContextPath() + "/home");
+
+	    return;
+	}
+
+	// Character
 	request.setCharacterEncoding("UTF-8");
-    	response.setCharacterEncoding("UTF-8");
-    	
-    	// Attributes
-    	request.setAttribute("contextPath", request.getContextPath());    	
+	response.setCharacterEncoding("UTF-8");
+
+	// Attribute
+	request.setAttribute("contextPath", request.getContextPath());
 
 	// Path
-	String path = Optional
-		.ofNullable(request.getPathInfo())
-		.orElse("/index");
+	String path = Optional.ofNullable(request.getPathInfo()).orElse("/index");
 
 	switch (path) {
 	case "/index" -> getIndex(request, response);
@@ -76,14 +85,22 @@ public class ArticleController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	// Character
+	// Session
+	HttpSession session = request.getSession();
+
+	if (session.getAttribute("logged") == null) {
+	    // Redirect (home)
+	    response.sendRedirect(request.getContextPath() + "/home");
+
+	    return;
+	}
+
+	// Character
 	request.setCharacterEncoding("UTF-8");
-    	response.setCharacterEncoding("UTF-8");
-    	
+	response.setCharacterEncoding("UTF-8");
+
 	// Path
-	String path = Optional
-		.ofNullable(request.getPathInfo())
-		.orElse("/index");
+	String path = Optional.ofNullable(request.getPathInfo()).orElse("/index");
 
 	switch (path) {
 	case "/create" -> setCreate(request, response);
@@ -94,7 +111,7 @@ public class ArticleController extends HttpServlet {
     }
 
     private void setCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Parameters
+	// Parameter
 	String idArticle = request.getParameter("idArticle");
 	String name = request.getParameter("name");
 	String description = request.getParameter("description");
@@ -109,7 +126,7 @@ public class ArticleController extends HttpServlet {
     }
 
     private void setUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Parameters
+	// Parameter
 	String idArticle = request.getParameter("idArticle");
 	String name = request.getParameter("name");
 	String description = request.getParameter("description");
@@ -124,7 +141,7 @@ public class ArticleController extends HttpServlet {
     }
 
     private void setDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Parameters
+	// Parameter
 	String idArticle = request.getParameter("idArticle");
 
 	// ArticleRepo (delete)
