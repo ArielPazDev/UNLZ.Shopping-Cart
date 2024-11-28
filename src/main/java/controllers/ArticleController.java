@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import models.Article;
+import models.User;
 import repos.ArticleRepo;
 
-@WebServlet("/articles/*")
+@WebServlet("/dashboard/articles/*")
 public class ArticleController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -27,9 +28,9 @@ public class ArticleController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
-	HttpSession session = request.getSession();
+	HttpSession session = request.getSession(false);
 
-	if (session.getAttribute("logged") == null) {
+	if (session == null || session.getAttribute("user") == null || !((User) session.getAttribute("user")).getRol().equals("Empleado")) {
 	    // Redirect (home)
 	    response.sendRedirect(request.getContextPath() + "/home");
 
@@ -86,9 +87,9 @@ public class ArticleController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
-	HttpSession session = request.getSession();
+	HttpSession session = request.getSession(false);
 
-	if (session.getAttribute("logged") == null) {
+	if (session == null || session.getAttribute("user") == null || !((User) session.getAttribute("user")).getRol().equals("Empleado")) {
 	    // Redirect (home)
 	    response.sendRedirect(request.getContextPath() + "/home");
 

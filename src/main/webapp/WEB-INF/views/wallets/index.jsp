@@ -8,7 +8,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Billetera (${user.name})</h1>
+	<h1><a href="../dashboard"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Billetera (${user.name})</h1>
 
 	<h2>Dinero disponible: $ ${user.money}</h2>
 

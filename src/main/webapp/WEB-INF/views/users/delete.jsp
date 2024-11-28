@@ -6,7 +6,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Usuario ${user.name} (borrar)</h1>
+	<h1><a href="../users"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Usuario ${user.name} (borrar)</h1>
 	
 	<form method="POST" action="delete">
 		<input name="idUser" type="hidden" value="${user.idUser}">

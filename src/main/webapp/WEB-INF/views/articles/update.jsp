@@ -7,7 +7,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Artículo ${article.idArticle} (editar)</h1>
+	<h1><a href="../articles"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Artículo ${article.idArticle} (editar)</h1>
 
 	<form method="POST" action="update">
 		<input name="idArticle" type="hidden" value="${article.idArticle}">

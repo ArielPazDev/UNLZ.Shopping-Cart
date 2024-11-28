@@ -28,11 +28,11 @@ public class Article {
     }
 
     public boolean getActive() {
-        return active;
+	return active;
     }
 
     public void setActive(boolean active) {
-        this.active = active;
+	this.active = active;
     }
 
     public String getName() {

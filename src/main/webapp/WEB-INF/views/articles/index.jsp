@@ -8,7 +8,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Artículos</h1>
+	<h1><a href="../dashboard"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Artículos</h1>
 
 	<a href="articles/create">Cargar nuevo artículo <img src="${contextPath}/img/svg/add.svg" alt="Add" width="24" height="24"></a>
 

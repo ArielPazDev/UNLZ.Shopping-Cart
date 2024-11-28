@@ -6,7 +6,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Usuario (crear)</h1>
+	<h1><a href="../users"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Usuario (crear)</h1>
 
 	<form method="POST" action="create">
 		<div>

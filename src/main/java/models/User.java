@@ -11,7 +11,7 @@ public class User {
 
     public User(String name, String username, String password, String rol) {
 	super();
-	
+
 	this.idUser = 0;
 	this.active = true;
 	this.name = name;
@@ -20,11 +20,10 @@ public class User {
 	this.rol = rol;
 	this.money = 0;
     }
-    
-    
+
     public User(int idUser, String name, String username, String password) {
 	super();
-	
+
 	this.idUser = idUser;
 	this.active = true;
 	this.name = name;
@@ -33,18 +32,6 @@ public class User {
 	this.rol = "";
 	this.money = 0;
     }
-
-    /*public User(int idUser, String name, String username, String password, String rol, double money) {
-	super();
-
-	this.idUser = idUser;
-	this.active = true;
-	this.name = name;
-	this.username = username;
-	this.password = password;
-	this.rol = rol;
-	this.money = money;
-    }*/
 
     public int getIdUser() {
 	return idUser;

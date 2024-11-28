@@ -6,7 +6,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Iniciar sesión</h1>
+	<h1><a href="../home"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Iniciar sesión</h1>
 	
 	<form method="POST" action="signin">
 		<div>

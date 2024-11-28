@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import models.User;
 import repos.UserRepo;
 
-@WebServlet("/users/*")
+@WebServlet("/dashboard/users/*")
 public class UserController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -27,9 +27,9 @@ public class UserController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
-	HttpSession session = request.getSession();
+	HttpSession session = request.getSession(false);
 
-	if (session.getAttribute("logged") == null) {
+	if (session == null || session.getAttribute("user") == null || !((User) session.getAttribute("user")).getRol().equals("Empleado")) {
 	    // Redirect (home)
 	    response.sendRedirect(request.getContextPath() + "/home");
 
@@ -86,9 +86,9 @@ public class UserController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
-	HttpSession session = request.getSession();
+	HttpSession session = request.getSession(false);
 
-	if (session.getAttribute("logged") == null) {
+	if (session == null || session.getAttribute("user") == null || !((User) session.getAttribute("user")).getRol().equals("Empleado")) {
 	    // Redirect (home)
 	    response.sendRedirect(request.getContextPath() + "/home");
 

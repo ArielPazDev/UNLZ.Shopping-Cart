@@ -27,24 +27,24 @@ public class HomeController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// Session
-	HttpSession session = request.getSession();
+	HttpSession session = request.getSession(true);
 
-	// Session (inactive 86400 seconds = 1 day)
+	// Session (expires in 86400 seconds = 1 day)
 	session.setMaxInactiveInterval(86400);
 
-	if (session.getAttribute("logged") != null) {
-	    // Redirect
-	    response.sendRedirect(request.getContextPath() + request.getServletPath() + "/dashboard");
+	if (session.getAttribute("user") != null) {
+	    // Redirect (dashboard)
+	    response.sendRedirect(request.getContextPath() + "/dashboard");
 
 	    return;
 	}
 
-	// Attribute
-	request.setAttribute("contextPath", request.getContextPath());
-
 	// Character
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
+
+	// Attribute
+	request.setAttribute("contextPath", request.getContextPath());
 
 	// Path
 	String path = Optional.ofNullable(request.getPathInfo()).orElse("/index");
@@ -53,7 +53,6 @@ public class HomeController extends HttpServlet {
 	case "/index" -> getIndex(request, response);
 	case "/signin" -> getSignIn(request, response);
 	case "/signup" -> getSignUp(request, response);
-	case "/signout" -> getSignOut(request, response);
 	default -> response.sendRedirect(request.getContextPath() + request.getServletPath());
 	}
     }
@@ -73,12 +72,17 @@ public class HomeController extends HttpServlet {
 	request.getRequestDispatcher("/WEB-INF/views/home/signup.jsp").forward(request, response);
     }
 
-    private void getSignOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Dispatcher
-	request.getRequestDispatcher("/WEB-INF/views/home/signout.jsp").forward(request, response);
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// Session
+	HttpSession session = request.getSession(false);
+
+	if (session == null) {
+	    // Redirect (home)
+	    response.sendRedirect(request.getContextPath() + "/home");
+
+	    return;
+	}
+
 	// Character
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
@@ -89,7 +93,6 @@ public class HomeController extends HttpServlet {
 	switch (path) {
 	case "/signin" -> setSignIn(request, response);
 	case "/signup" -> setSignUp(request, response);
-	case "/signout" -> setSignOut(request, response);
 	default -> response.sendRedirect(request.getContextPath() + request.getServletPath());
 	}
     }
@@ -108,8 +111,7 @@ public class HomeController extends HttpServlet {
 	} else {
 	    // Session
 	    HttpSession session = request.getSession();
-	    
-	    session.setAttribute("logged", true);
+
 	    session.setAttribute("user", user);
 
 	    // Redirect (dashboard)
@@ -120,10 +122,4 @@ public class HomeController extends HttpServlet {
     private void setSignUp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
-    private void setSignOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// Session
-	HttpSession session = request.getSession();
-
-	session.invalidate();
-    }
 }

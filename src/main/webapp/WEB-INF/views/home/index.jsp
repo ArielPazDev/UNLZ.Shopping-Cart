@@ -10,7 +10,6 @@
 	
 	<a href="home/signin">Sign In <img src="${contextPath}/img/svg/add.svg" alt="Add" width="24" height="24"></a>
 	<a href="home/signup">Sign Up <img src="${contextPath}/img/svg/add.svg" alt="Add" width="24" height="24"></a>
-	<a href="home/signout">Sign Out <img src="${contextPath}/img/svg/add.svg" alt="Add" width="24" height="24"></a>
 
 </body>
 </html>

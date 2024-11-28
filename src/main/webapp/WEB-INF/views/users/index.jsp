@@ -8,7 +8,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Usuarios</h1>
+	<h1><a href="../dashboard"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Usuarios</h1>
 
 	<a href="users/create">Cargar nuevo usuario <img src="${contextPath}/img/svg/add.svg" alt="Add" width="24" height="24"></a>
 

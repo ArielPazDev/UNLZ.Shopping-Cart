@@ -6,7 +6,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<h1>Registrarse</h1>
+	<h1><a href="../home"><img src="${contextPath}/img/svg/back.svg" alt="Back" width="48" height="48"></a>Registrarse</h1>
 
 </body>
 </html>
